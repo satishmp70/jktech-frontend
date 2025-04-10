@@ -49,7 +49,7 @@ export class LoginComponent {
   
 
   facebookLogin(){
-    
+    this.authService.facebookLogin();
   }
   googleLogin() {
     this.authService.googleLogin();

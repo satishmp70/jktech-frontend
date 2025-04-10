@@ -73,13 +73,11 @@ export class AuthService {
     localStorage.setItem('token', token);
   }
 
-  handleOAuthCallback(provider: string = 'google') {
-    return this.http.get<any>(`${environment.apiUrl}/auth/${provider}/redirect`, {
-      withCredentials: true,
-    });
-  }
-
   googleLogin() {
     window.location.href = `${environment.apiUrl}/auth/google`;
+  }
+  
+  facebookLogin() {
+    window.location.href = `${environment.apiUrl}/auth/facebook`;
   }
 }
