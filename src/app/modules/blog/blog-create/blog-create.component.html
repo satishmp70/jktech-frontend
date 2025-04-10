@@ -1,0 +1,23 @@
+<span *ngIf="!blogId">
+  <h2>Create Blog</h2>
+</span>
+<span *ngIf="blogId">
+  <h2>Update Blog</h2>
+</span>
+
+<form class="example-form" [formGroup]="blogForm" (ngSubmit)="!blogId ? createPost() : updatePost()">
+  <mat-form-field class="example-full-width">
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title" required placeholder="" value="">
+  </mat-form-field>
+  <br>
+  <mat-form-field class="example-full-width">
+    <mat-label>Leave a comment</mat-label>
+    <textarea matInput formControlName="content" required placeholder="" rows="2"></textarea>
+  </mat-form-field>
+  <br>
+  <button mat-raised-button color="accent" type="submit" [disabled]="blogForm.invalid" class="create-button">
+    <mat-icon class="button-icon">check_circle</mat-icon> Create Post
+  </button>
+
+</form>

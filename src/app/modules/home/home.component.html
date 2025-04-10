@@ -1,0 +1,22 @@
+<mat-card class="home-container">
+  <mat-card-title class="card-title">Welcome to the Dashboard</mat-card-title>
+  <mat-divider></mat-divider>
+
+  <div class="nav-links">
+    <a mat-raised-button color="primary" routerLink="/blog" class="nav-button">
+      <mat-icon class="button-icon">article</mat-icon> View Blog
+    </a>
+    <a mat-raised-button color="accent" routerLink="/blog/create" class="nav-button">
+      <mat-icon class="button-icon">create</mat-icon> Create Blog Post
+    </a>
+    <a
+      *ngIf="userRole === 'admin'"
+      mat-raised-button
+      color="warn"
+      routerLink="/users"
+      class="nav-button"
+    >
+      <mat-icon class="button-icon">group</mat-icon> User Management
+    </a>
+  </div>
+</mat-card>

@@ -1,0 +1,28 @@
+<mat-card class="user-form">
+    <mat-card-title>{{ isEditMode ? 'Edit User' : 'Add User' }}</mat-card-title>
+  
+    <form [formGroup]="userForm" (ngSubmit)="saveUser()">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" required />
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" required />
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Role</mat-label>
+        <mat-select formControlName="role">
+          <mat-option value="user">User</mat-option>
+          <mat-option value="admin">Admin</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary" type="submit">
+        {{ isEditMode ? 'Update' : 'Create' }}
+      </button>
+    </form>
+  </mat-card>
+  

@@ -1,0 +1,10 @@
+<nav class="main-nav">
+  <div class="left-links">
+    <a mat-button routerLink="/home" routerLinkActive="active-link">Home</a>
+    <a mat-button routerLink="/blog" routerLinkActive="active-link">Blog</a>
+  </div>
+  <div class="right-links">
+    <a mat-button *ngIf="isAdmin()" routerLink="/users" routerLinkActive="active-link">Users</a>
+    <a mat-button (click)="logout()">Logout</a>
+  </div>
+</nav>

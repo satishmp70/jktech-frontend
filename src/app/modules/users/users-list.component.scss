@@ -1,0 +1,23 @@
+.users-container {
+    margin: 30px auto;
+    max-width: 1000px;
+    padding: 20px;
+  
+    .users-table-wrapper {
+      overflow-x: auto;
+  
+      .full-width-table {
+        width: 100%;
+        min-width: 600px;
+  
+        th, td {
+          padding: 12px;
+        }
+  
+        mat-icon {
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+  

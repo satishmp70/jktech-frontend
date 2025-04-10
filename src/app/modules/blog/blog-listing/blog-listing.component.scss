@@ -1,0 +1,15 @@
+.blog-container {
+    margin: 20px auto;
+    max-width: 900px;
+  
+    .blog-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+  
+      .blog-item {
+        padding: 20px;
+      }
+    }
+  }
+  
