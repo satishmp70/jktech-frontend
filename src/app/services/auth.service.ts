@@ -12,11 +12,11 @@ import { jwtDecode } from 'jwt-decode';
 export class AuthService {
   private jwtHelper = new JwtHelperService();
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) { }
 
   login(payload: { email: string; password: string }): Observable<{ accessToken: string }> {
     return this.http.post<{ accessToken: string }>(`${environment.apiUrl}/auth/login`, payload).pipe(
-      tap(response => {        
+      tap(response => {
         localStorage.setItem('token', response.accessToken);
         this.router.navigate(['/home']);
       })
@@ -30,19 +30,19 @@ export class AuthService {
       })
     );
   }
-  
+
   isAuthenticated(): boolean {
     const token = localStorage.getItem('token');
     if (!token || token.split('.').length !== 3) {
       return false;
     }
-  
+
     try {
       const decoded: any = jwtDecode(token);
       const exp = decoded.exp;
-  
+
       if (!exp) return false;
-  
+
       const isExpired = Date.now() >= exp * 1000;
       return !isExpired;
     } catch (error) {
@@ -73,11 +73,15 @@ export class AuthService {
     localStorage.setItem('token', token);
   }
 
-  googleLogin() {
-    window.location.href = `${environment.apiUrl}/auth/google`;
+  redirectTo(url: string): void {
+    window.location.assign(url);
   }
-  
-  facebookLogin() {
-    window.location.href = `${environment.apiUrl}/auth/facebook`;
+
+  googleLogin(): void {
+    this.redirectTo(`${environment.apiUrl}/auth/google`);
+  }
+
+  facebookLogin(): void {
+    this.redirectTo(`${environment.apiUrl}/auth/facebook`);
   }
 }
